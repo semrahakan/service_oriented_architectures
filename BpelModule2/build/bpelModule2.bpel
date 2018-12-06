@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<process
+    name="bpelModule2"
+    targetNamespace="http://enterprise.netbeans.org/bpel/BpelModule2/bpelModule2"
+    xmlns:tns="http://enterprise.netbeans.org/bpel/BpelModule2/bpelModule2"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:sxt="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Trace" 
+    xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2"
+    xmlns:sxat="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Attachment"
+    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling" xmlns:axis2="http://inm381/Coursework" xmlns:ns0="http://inm381/Coursework/xsd" xmlns:ns1="http://ws.apache.org/axis2/xsd">
+   <import namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" location="Bpel.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://enterprise.netbeans.org/bpel/VserServiceWrapper" location="VserServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://inm381/Coursework" location="VserService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://enterprise.netbeans.org/bpel/VstoSWrapper" location="VstoSWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://inm381/Coursework" location="VstoS.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://enterprise.netbeans.org/bpel/LbrosWrapper" location="LbrosWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://inm381/Coursework" location="Lbros.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://enterprise.netbeans.org/bpel/LappSWrapper" location="LappSWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://inm381/Coursework" location="LappS.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://enterprise.netbeans.org/bpel/VomSWrapper" location="VomSWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://inm381/Coursework" location="VomS.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://enterprise.netbeans.org/bpel/CpaySWrapper" location="CpaySWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <import namespace="http://inm381/Coursework" location="CpayS.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+   <partnerLinks>
+      <partnerLink name="SearchV_PL" xmlns:tns="http://enterprise.netbeans.org/bpel/VserServiceWrapper" partnerLinkType="tns:VserServiceLinkType" partnerRole="VserServiceRole"/>
+      <partnerLink name="SaveV_PL" xmlns:tns="http://enterprise.netbeans.org/bpel/VstoSWrapper" partnerLinkType="tns:VstoSLinkType" partnerRole="VstoSRole"/>
+      <partnerLink name="SearchL_PL" xmlns:tns="http://enterprise.netbeans.org/bpel/LbrosWrapper" partnerLinkType="tns:LbrosLinkType" partnerRole="LbrosRole"/>
+      <partnerLink name="LoanApp" xmlns:tns="http://enterprise.netbeans.org/bpel/LappSWrapper" partnerLinkType="tns:LappSLinkType" partnerRole="LappSRole"/>
+      <partnerLink name="VomS_PL" xmlns:tns="http://enterprise.netbeans.org/bpel/VomSWrapper" partnerLinkType="tns:VomSLinkType" partnerRole="VomSRole"/>
+      <partnerLink name="CpaS_PL" xmlns:tns="http://enterprise.netbeans.org/bpel/CpaySWrapper" partnerLinkType="tns:CpaySLinkType" partnerRole="CpaySRole"/>
+      <partnerLink name="PartnerLink1" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" partnerLinkType="tns:Bpel" myRole="BpelPortTypeRole"/>
+   </partnerLinks>
+   <variables>
+      <variable name="CardPaymentOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationResponse7"/>
+      <variable name="ResultPaymentOut" messageType="axis2:resultPaymentResponse"/>
+      <variable name="ResultPaymentIn" messageType="axis2:resultPaymentRequest"/>
+      <variable name="CardPaymentIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationRequest7"/>
+      <variable name="CarOfferOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationResponse6"/>
+      <variable name="GiveOfferOut" messageType="axis2:giveOfferResponse"/>
+      <variable name="GiveOfferIn" messageType="axis2:giveOfferRequest"/>
+      <variable name="CarOfferIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationRequest6"/>
+      <variable name="FileLoanAppOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationResponse4"/>
+      <variable name="LoanAppOut" messageType="axis2:loanAppResponse"/>
+      <variable name="LoanAppIn" messageType="axis2:loanAppRequest"/>
+      <variable name="FileLoanAppIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationRequest4"/>
+      <variable name="RetrieveLoansOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationResponse3"/>
+      <variable name="RetrieveLoanOut" messageType="axis2:retrieveLoanResponse"/>
+      <variable name="RetrieveLoanIn" messageType="axis2:retrieveLoanRequest"/>
+      <variable name="RetrieveLoansIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationRequest3"/>
+      <variable name="SaveLoanProductsOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationResponse2"/>
+      <variable name="SaveLloanOut" messageType="axis2:SaveLloanResponse"/>
+      <variable name="SaveLloanIn" messageType="axis2:SaveLloanRequest"/>
+      <variable name="SaveLoanProductsIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationRequest2"/>
+      <variable name="SearchLoanOut1" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationResponse1"/>
+      <variable name="ReturnsearchLoanOut" messageType="axis2:returnsearchLoanResponse"/>
+      <variable name="ReturnsearchLoanIn" messageType="axis2:returnsearchLoanRequest"/>
+      <variable name="SearchLoanOut" messageType="axis2:searchLoanResponse"/>
+      <variable name="SearchLoanIn1" messageType="axis2:searchLoanRequest"/>
+      <variable name="SearchLoanIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationRequest1"/>
+      <variable name="SaveVehicleOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationResponse"/>
+      <variable name="SeeSavedSearchOut" messageType="axis2:SeeSavedSearchResponse"/>
+      <variable name="SeeSavedSearchIn" messageType="axis2:SeeSavedSearchRequest"/>
+      <variable name="SaveSearchOut" messageType="axis2:SaveSearchResponse"/>
+      <variable name="SaveSearchIn" messageType="axis2:SaveSearchRequest"/>
+      <variable name="SaveVehicleIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:BpelOperationRequest"/>
+      <variable name="FindVehicleOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:findVehicleResponse"/>
+      <variable name="SearchVehicleOut" xmlns:axis2="http://inm381/Coursework" messageType="axis2:searchVehicleResponse"/>
+      <variable name="SearchVehicleIn" xmlns:axis2="http://inm381/Coursework" messageType="axis2:searchVehicleRequest"/>
+      <variable name="FindVehicleIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" messageType="tns:findVehicleRequest"/>
+   </variables>
+   <sequence>
+      <pick name="Pick1" createInstance="yes">
+         <onMessage partnerLink="PartnerLink1" operation="findVehicle" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="FindVehicleIn">
+            <sequence name="Sequence1">
+               <assign name="Assign1">
+                  <copy>
+                     <from variable="FindVehicleIn" part="make"/>
+                     <to>$SearchVehicleIn.parameters/ns0:make</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="model"/>
+                     <to>$SearchVehicleIn.parameters/ns0:model</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="year"/>
+                     <to>$SearchVehicleIn.parameters/ns0:year</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="price"/>
+                     <to>$SearchVehicleIn.parameters/ns0:price</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="part5"/>
+                     <to>$SearchVehicleIn.parameters/ns0:mileage</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke1" partnerLink="SearchV_PL" operation="searchVehicle" portType="axis2:VserServicePortType" inputVariable="SearchVehicleIn" outputVariable="SearchVehicleOut"/>
+               <assign name="Assign19">
+                  <copy>
+                     <from variable="FindVehicleIn" part="make"/>
+                     <to>$FindVehicleOut.car/ns1:make</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="model"/>
+                     <to>$FindVehicleOut.car/ns1:model</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="year"/>
+                     <to>$FindVehicleOut.car/ns1:year</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="price"/>
+                     <to>$FindVehicleOut.car/ns1:price</to>
+                  </copy>
+                  <copy>
+                     <from variable="FindVehicleIn" part="part5"/>
+                     <to>$FindVehicleOut.car/ns1:mileage</to>
+                  </copy>
+               </assign>
+               <reply name="Reply1" partnerLink="PartnerLink1" operation="findVehicle" portType="tns:BpelPortType" variable="FindVehicleOut"/>
+            </sequence>
+         </onMessage>
+         <onMessage partnerLink="PartnerLink1" operation="saveVehicle" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="SaveVehicleIn">
+            <sequence name="Sequence2">
+               <assign name="Assign3">
+                  <copy>
+                     <from variable="SaveVehicleIn" part="part1"/>
+                     <to>$SaveSearchIn.parameters/ns0:idCar1</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke2" partnerLink="SaveV_PL" operation="SaveSearch" portType="axis2:VstoSPortType" inputVariable="SaveSearchIn" outputVariable="SaveSearchOut"/>
+               <assign name="Assign4">
+                  <copy>
+                     <from>$SaveSearchOut.parameters/ns0:return/ns1:id</from>
+                     <to>$SeeSavedSearchIn.parameters/ns0:idCar1</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke3" partnerLink="SaveV_PL" operation="SeeSavedSearch" portType="axis2:VstoSPortType" inputVariable="SeeSavedSearchIn" outputVariable="SeeSavedSearchOut"/>
+               <assign name="Assign5">
+                  <copy>
+                     <from>$SeeSavedSearchOut.parameters/ns0:return/ns1:id</from>
+                     <to>$SaveVehicleOut.car/ns1:id</to>
+                  </copy>
+                  <copy>
+                     <from>$SeeSavedSearchOut.parameters/ns0:return/ns1:make</from>
+                     <to>$SaveVehicleOut.car/ns1:make</to>
+                  </copy>
+                  <copy>
+                     <from>$SeeSavedSearchOut.parameters/ns0:return/ns1:mileage</from>
+                     <to>$SaveVehicleOut.car/ns1:mileage</to>
+                  </copy>
+                  <copy>
+                     <from>$SeeSavedSearchOut.parameters/ns0:return/ns1:model</from>
+                     <to>$SaveVehicleOut.car/ns1:model</to>
+                  </copy>
+                  <copy>
+                     <from>$SeeSavedSearchOut.parameters/ns0:return/ns1:price</from>
+                     <to>$SaveVehicleOut.car/ns1:price</to>
+                  </copy>
+                  <copy>
+                     <from>$SeeSavedSearchOut.parameters/ns0:return/ns1:year</from>
+                     <to>$SaveVehicleOut.car/ns1:year</to>
+                  </copy>
+               </assign>
+               <reply name="Reply2" partnerLink="PartnerLink1" operation="saveVehicle" portType="tns:BpelPortType" variable="SaveVehicleOut"/>
+            </sequence>
+         </onMessage>
+         <onMessage partnerLink="PartnerLink1" operation="searchLoan" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="SearchLoanIn">
+            <sequence name="Sequence3">
+               <assign name="Assign6">
+                  <copy>
+                     <from variable="SearchLoanIn" part="part1"/>
+                     <to>$SearchLoanIn1.parameters/ns0:userCar</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke4" partnerLink="SearchL_PL" operation="searchLoan" portType="axis2:LbrosPortType" inputVariable="SearchLoanIn1" outputVariable="SearchLoanOut"/>
+               <assign name="Assign7">
+                  <copy>
+                     <from>$SearchLoanOut.parameters/ns0:return/ns1:cars</from>
+                     <to>$ReturnsearchLoanIn.parameters/ns0:userCar</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke5" partnerLink="SearchL_PL" operation="returnsearchLoan" portType="axis2:LbrosPortType" inputVariable="ReturnsearchLoanIn" outputVariable="ReturnsearchLoanOut"/>
+               <assign name="Assign8">
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:borrow</from>
+                     <to>$SearchLoanOut1.part1/ns1:borrow</to>
+                  </copy>
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:cars</from>
+                     <to>$SearchLoanOut1.part1/ns1:cars</to>
+                  </copy>
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:idLoan</from>
+                     <to>$SearchLoanOut1.part1/ns1:idLoan</to>
+                  </copy>
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:lender</from>
+                     <to>$SearchLoanOut1.part1/ns1:lender</to>
+                  </copy>
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:payment</from>
+                     <to>$SearchLoanOut1.part1/ns1:payment</to>
+                  </copy>
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:period</from>
+                     <to>$SearchLoanOut1.part1/ns1:period</to>
+                  </copy>
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:totalPayment</from>
+                     <to>$SearchLoanOut1.part1/ns1:totalPayment</to>
+                  </copy>
+                  <copy>
+                     <from>$ReturnsearchLoanOut.parameters/ns0:return/ns1:userID</from>
+                     <to>$SearchLoanOut1.part1/ns1:userID</to>
+                  </copy>
+               </assign>
+               <reply name="Reply3" partnerLink="PartnerLink1" operation="searchLoan" portType="tns:BpelPortType" variable="SearchLoanOut1"/>
+            </sequence>
+         </onMessage>
+         <onMessage partnerLink="PartnerLink1" operation="saveLoanProducts" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="SaveLoanProductsIn">
+            <sequence name="Sequence4">
+               <assign name="Assign9">
+                  <copy>
+                     <from variable="SaveLoanProductsIn" part="idLoan"/>
+                     <to>$SaveLloanIn.parameters/ns0:idLoan</to>
+                  </copy>
+                  <copy>
+                     <from variable="SaveLoanProductsIn" part="part2"/>
+                     <to>$SaveLloanIn.parameters/ns0:userID</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke6" partnerLink="LoanApp" operation="SaveLloan" portType="axis2:LappSPortType" inputVariable="SaveLloanIn" outputVariable="SaveLloanOut"/>
+               <assign name="Assign10">
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:borrow</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:borrow</to>
+                  </copy>
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:cars</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:cars</to>
+                  </copy>
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:idLoan</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:idLoan</to>
+                  </copy>
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:lender</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:lender</to>
+                  </copy>
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:payment</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:payment</to>
+                  </copy>
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:period</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:period</to>
+                  </copy>
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:totalPayment</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:totalPayment</to>
+                  </copy>
+                  <copy>
+                     <from>$SaveLloanOut.parameters/ns0:return/ns1:userID</from>
+                     <to>$SaveLoanProductsOut.LoanProducts/ns1:userID</to>
+                  </copy>
+               </assign>
+               <reply name="Reply4" partnerLink="PartnerLink1" operation="saveLoanProducts" portType="tns:BpelPortType" variable="SaveLoanProductsOut"/>
+            </sequence>
+         </onMessage>
+         <onMessage partnerLink="PartnerLink1" operation="retrieveLoans" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="RetrieveLoansIn">
+            <sequence name="Sequence5">
+               <assign name="Assign11">
+                  <copy>
+                     <from variable="RetrieveLoansIn" part="part1"/>
+                     <to>$RetrieveLoanIn.parameters/ns0:userID</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke7" partnerLink="LoanApp" operation="retrieveLoan" portType="axis2:LappSPortType" inputVariable="RetrieveLoanIn" outputVariable="RetrieveLoanOut"/>
+               <assign name="Assign12">
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:borrow</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:borrow</to>
+                  </copy>
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:cars</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:cars</to>
+                  </copy>
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:idLoan</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:idLoan</to>
+                  </copy>
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:lender</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:lender</to>
+                  </copy>
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:payment</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:payment</to>
+                  </copy>
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:period</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:period</to>
+                  </copy>
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:totalPayment</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:totalPayment</to>
+                  </copy>
+                  <copy>
+                     <from>$RetrieveLoanOut.parameters/ns0:return/ns1:userID</from>
+                     <to>$RetrieveLoansOut.loanProducts/ns1:userID</to>
+                  </copy>
+               </assign>
+               <reply name="Reply5" partnerLink="PartnerLink1" operation="retrieveLoans" portType="tns:BpelPortType" variable="RetrieveLoansOut"/>
+            </sequence>
+         </onMessage>
+         <onMessage partnerLink="PartnerLink1" operation="fileLoanApp" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="FileLoanAppIn">
+            <sequence name="Sequence6">
+               <assign name="Assign13">
+                  <copy>
+                     <from variable="FileLoanAppIn" part="part1"/>
+                     <to>$LoanAppIn.parameters/ns0:userID</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke8" partnerLink="LoanApp" operation="loanApp" portType="axis2:LappSPortType" inputVariable="LoanAppIn" outputVariable="LoanAppOut"/>
+               <assign name="Assign14">
+                  <copy>
+                     <from>$LoanAppOut.parameters/ns0:return</from>
+                     <to variable="FileLoanAppOut" part="part1"/>
+                  </copy>
+               </assign>
+               <reply name="Reply6" partnerLink="PartnerLink1" operation="fileLoanApp" portType="tns:BpelPortType" variable="FileLoanAppOut"/>
+            </sequence>
+         </onMessage>
+         <onMessage partnerLink="PartnerLink1" operation="CarOffer" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="CarOfferIn">
+            <sequence name="Sequence7">
+               <assign name="Assign15">
+                  <copy>
+                     <from variable="CarOfferIn" part="VehiclePrice"/>
+                     <to>$GiveOfferIn.parameters/ns0:vehiclePrice</to>
+                  </copy>
+                  <copy>
+                     <from variable="CarOfferIn" part="money"/>
+                     <to>$GiveOfferIn.parameters/ns0:money</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke9" partnerLink="VomS_PL" operation="giveOffer" portType="axis2:VomSPortType" inputVariable="GiveOfferIn" outputVariable="GiveOfferOut"/>
+               <assign name="Assign16">
+                  <copy>
+                     <from>$GiveOfferOut.parameters/ns0:return</from>
+                     <to variable="CarOfferOut" part="offer"/>
+                  </copy>
+               </assign>
+               <reply name="Reply7" partnerLink="PartnerLink1" operation="CarOffer" portType="tns:BpelPortType" variable="CarOfferOut"/>
+            </sequence>
+         </onMessage>
+         <onMessage partnerLink="PartnerLink1" operation="CardPayment" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" portType="tns:BpelPortType" variable="CardPaymentIn">
+            <sequence name="Sequence8">
+               <assign name="Assign17">
+                  <copy>
+                     <from variable="CardPaymentIn" part="CardType"/>
+                     <to>$ResultPaymentIn.parameters/ns0:CardType</to>
+                  </copy>
+                  <copy>
+                     <from variable="CardPaymentIn" part="CardNumber"/>
+                     <to>$ResultPaymentIn.parameters/ns0:CardNumber</to>
+                  </copy>
+                  <copy>
+                     <from variable="CardPaymentIn" part="part3"/>
+                     <to>$ResultPaymentIn.parameters/ns0:Amount</to>
+                  </copy>
+               </assign>
+               <invoke name="Invoke10" partnerLink="CpaS_PL" operation="resultPayment" portType="axis2:CpaySPortType" inputVariable="ResultPaymentIn" outputVariable="ResultPaymentOut"/>
+               <assign name="Assign18">
+                  <copy>
+                     <from>$ResultPaymentOut.parameters/ns0:return</from>
+                     <to variable="CardPaymentOut" part="part1"/>
+                  </copy>
+               </assign>
+               <reply name="Reply8" partnerLink="PartnerLink1" operation="CardPayment" portType="tns:BpelPortType" variable="CardPaymentOut"/>
+            </sequence>
+         </onMessage>
+      </pick>
+   </sequence>
+</process>

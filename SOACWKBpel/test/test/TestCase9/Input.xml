@@ -1,0 +1,8 @@
+<soapenv:Envelope xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cred="http://www.webservicex.net/CreditCard.asmx">
+  <soapenv:Body>
+    <cred:validCar>
+      <cardType>Visa</cardType>
+      <part2>4111111111111111</part2>
+    </cred:validCar>
+  </soapenv:Body>
+</soapenv:Envelope>

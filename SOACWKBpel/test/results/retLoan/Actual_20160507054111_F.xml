@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <m:retrieveLoansResponse xmlns:m="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL">
+      <loanProducts>
+        <ns1:borrow xmlns:ns1="http://ws.apache.org/axis2/xsd">10.000</ns1:borrow>
+        <ns1:cars xmlns:ns1="http://ws.apache.org/axis2/xsd">bwm</ns1:cars>
+        <ns1:idLoan xmlns:ns1="http://ws.apache.org/axis2/xsd">1</ns1:idLoan>
+        <ns1:lender xmlns:ns1="http://ws.apache.org/axis2/xsd">NationWideBank</ns1:lender>
+        <ns1:payment xmlns:ns1="http://ws.apache.org/axis2/xsd">£181PerMounth</ns1:payment>
+        <ns1:period xmlns:ns1="http://ws.apache.org/axis2/xsd">60Mounths</ns1:period>
+        <ns1:totalPayment xmlns:ns1="http://ws.apache.org/axis2/xsd">10.874</ns1:totalPayment>
+        <ns1:userID xmlns:ns1="http://ws.apache.org/axis2/xsd">1</ns1:userID>
+      </loanProducts>
+    </m:retrieveLoansResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

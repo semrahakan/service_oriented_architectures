@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="http://inm381/Coursework" xmlns:ns2="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" xmlns:ns3="http://enterprise.netbeans.org/bpel/BpelModule2/bpelModule2" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="VstoSHttpSoap11Endpoint" interface-name="ns1:VstoSPortType" name="endpoint1" service-name="ns1:VstoS"/>
+        <endpoint endpoint-name="VserServiceHttpSoap11Endpoint" interface-name="ns1:VserServicePortType" name="endpoint2" service-name="ns1:VserService"/>
+        <endpoint endpoint-name="BpelPort" interface-name="ns2:BpelPortType" name="endpoint3" service-name="ns2:BpelService"/>
+        <endpoint endpoint-name="LbrosHttpSoap11Endpoint" interface-name="ns1:LbrosPortType" name="endpoint4" service-name="ns1:Lbros"/>
+        <endpoint endpoint-name="LappSHttpSoap11Endpoint" interface-name="ns1:LappSPortType" name="endpoint5" service-name="ns1:LappS"/>
+        <endpoint endpoint-name="VomSHttpSoap11Endpoint" interface-name="ns1:VomSPortType" name="endpoint6" service-name="ns1:VomS"/>
+        <endpoint endpoint-name="CpaySHttpSoap11Endpoint" interface-name="ns1:CpaySPortType" name="endpoint7" service-name="ns1:CpayS"/>
+        <endpoint display-name="PartnerLink1" endpoint-name="BpelPortTypeRole_myRole" file-path="bpelModule2.bpel" interface-name="ns2:BpelPortType" name="endpoint8" process-name="bpelModule2" service-name="ns3:PartnerLink1"/>
+        <endpoint display-name="SearchV_PL" endpoint-name="VserServiceRole_partnerRole" file-path="bpelModule2.bpel" interface-name="ns1:VserServicePortType" name="endpoint9" process-name="bpelModule2" service-name="ns3:SearchV_PL"/>
+        <endpoint display-name="SaveV_PL" endpoint-name="VstoSRole_partnerRole" file-path="bpelModule2.bpel" interface-name="ns1:VstoSPortType" name="endpoint10" process-name="bpelModule2" service-name="ns3:SaveV_PL"/>
+        <endpoint display-name="SearchL_PL" endpoint-name="LbrosRole_partnerRole" file-path="bpelModule2.bpel" interface-name="ns1:LbrosPortType" name="endpoint11" process-name="bpelModule2" service-name="ns3:SearchL_PL"/>
+        <endpoint display-name="LoanApp" endpoint-name="LappSRole_partnerRole" file-path="bpelModule2.bpel" interface-name="ns1:LappSPortType" name="endpoint12" process-name="bpelModule2" service-name="ns3:LoanApp"/>
+        <endpoint display-name="VomS_PL" endpoint-name="VomSRole_partnerRole" file-path="bpelModule2.bpel" interface-name="ns1:VomSPortType" name="endpoint13" process-name="bpelModule2" service-name="ns3:VomS_PL"/>
+        <endpoint display-name="CpaS_PL" endpoint-name="CpaySRole_partnerRole" file-path="bpelModule2.bpel" interface-name="ns1:CpaySPortType" name="endpoint14" process-name="bpelModule2" service-name="ns3:CpaS_PL"/>
+    </endpoints>
+    <service-units>
+        <service-engine-service-unit artifacts-zip="BpelModule2.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="SOACWKBpel-BpelModule2" unit-name="BpelModule2" unknown="false" x="154" y="99">
+            <provides endpoint="endpoint8"/>
+            <consumes endpoint="endpoint9"/>
+            <consumes endpoint="endpoint10"/>
+            <consumes endpoint="endpoint11"/>
+            <consumes endpoint="endpoint12"/>
+            <consumes endpoint="endpoint13"/>
+            <consumes endpoint="endpoint14"/>
+        </service-engine-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="SOACWKBpel-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port x="67" y="513">
+                    <link xlink:href="../jbiServiceUnits/BpelModule2/Bpel.wsdl#xpointer(/definitions/service[@name='BpelService']/port[@name='BpelPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint3"/>
+                    <provides endpoint="endpoint3"/>
+                </port>
+                <port x="67" y="39">
+                    <link xlink:href="../jbiServiceUnits/BpelModule2/CpayS.wsdl#xpointer(/definitions/service[@name='CpayS']/port[@name='CpaySHttpSoap11Endpoint'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint7"/>
+                    <provides endpoint="endpoint7"/>
+                </port>
+                <port x="67" y="197">
+                    <link xlink:href="../jbiServiceUnits/BpelModule2/LappS.wsdl#xpointer(/definitions/service[@name='LappS']/port[@name='LappSHttpSoap11Endpoint'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint5"/>
+                    <provides endpoint="endpoint5"/>
+                </port>
+                <port x="67" y="276">
+                    <link xlink:href="../jbiServiceUnits/BpelModule2/Lbros.wsdl#xpointer(/definitions/service[@name='Lbros']/port[@name='LbrosHttpSoap11Endpoint'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint4"/>
+                    <provides endpoint="endpoint4"/>
+                </port>
+                <port x="67" y="118">
+                    <link xlink:href="../jbiServiceUnits/BpelModule2/VomS.wsdl#xpointer(/definitions/service[@name='VomS']/port[@name='VomSHttpSoap11Endpoint'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint6"/>
+                    <provides endpoint="endpoint6"/>
+                </port>
+                <port x="67" y="434">
+                    <link xlink:href="../jbiServiceUnits/BpelModule2/VserService.wsdl#xpointer(/definitions/service[@name='VserService']/port[@name='VserServiceHttpSoap11Endpoint'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+                <port x="67" y="355">
+                    <link xlink:href="../jbiServiceUnits/BpelModule2/VstoS.wsdl#xpointer(/definitions/service[@name='VstoS']/port[@name='VstoSHttpSoap11Endpoint'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint13" provider="endpoint6" state="unchanged"/>
+        <connection consumer="endpoint11" provider="endpoint4" state="unchanged"/>
+        <connection consumer="endpoint12" provider="endpoint5" state="unchanged"/>
+        <connection consumer="endpoint10" provider="endpoint1" state="unchanged"/>
+        <connection consumer="endpoint3" provider="endpoint8" state="unchanged"/>
+        <connection consumer="endpoint9" provider="endpoint2" state="unchanged"/>
+        <connection consumer="endpoint14" provider="endpoint7" state="unchanged"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/Bpel.wsdl#xpointer(/definitions/portType[@name='BpelPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/CpayS.wsdl#xpointer(/definitions/portType[@name='CpaySPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/LappS.wsdl#xpointer(/definitions/portType[@name='LappSPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/Lbros.wsdl#xpointer(/definitions/portType[@name='LbrosPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VomS.wsdl#xpointer(/definitions/portType[@name='VomSPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VserService.wsdl#xpointer(/definitions/portType[@name='VserServicePortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VstoS.wsdl#xpointer(/definitions/portType[@name='VstoSPortType'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/Bpel.wsdl#xpointer(/definitions/binding[@name='BpelBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/CpayS.wsdl#xpointer(/definitions/binding[@name='CpaySSoap11Binding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/LappS.wsdl#xpointer(/definitions/binding[@name='LappSSoap11Binding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/Lbros.wsdl#xpointer(/definitions/binding[@name='LbrosSoap11Binding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VomS.wsdl#xpointer(/definitions/binding[@name='VomSSoap11Binding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VserService.wsdl#xpointer(/definitions/binding[@name='VserServiceSoap11Binding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VstoS.wsdl#xpointer(/definitions/binding[@name='VstoSSoap11Binding'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/Bpel.wsdl#xpointer(/definitions/service[@name='BpelService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/CpayS.wsdl#xpointer(/definitions/service[@name='CpayS'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/LappS.wsdl#xpointer(/definitions/service[@name='LappS'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/Lbros.wsdl#xpointer(/definitions/service[@name='Lbros'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VomS.wsdl#xpointer(/definitions/service[@name='VomS'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VserService.wsdl#xpointer(/definitions/service[@name='VserService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/BpelModule2/VstoS.wsdl#xpointer(/definitions/service[@name='VstoS'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="514"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

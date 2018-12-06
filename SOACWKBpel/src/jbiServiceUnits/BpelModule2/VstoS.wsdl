@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://inm381/Coursework" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://inm381/Coursework/xsd" xmlns:ax221="http://ws.apache.org/axis2/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://inm381/Coursework">
+    <wsdl:documentation>VstoS</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="Cars">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="make" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="mileage" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="price" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="year" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax222="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://inm381/Coursework/xsd">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="SaveSearch">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="idCar1" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SaveSearchResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax222:Cars"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SeeSavedSearch">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="idCar1" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SeeSavedSearchResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax222:Cars"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="SaveSearchRequest">
+        <wsdl:part name="parameters" element="ns:SaveSearch"/>
+    </wsdl:message>
+    <wsdl:message name="SaveSearchResponse">
+        <wsdl:part name="parameters" element="ns:SaveSearchResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SeeSavedSearchRequest">
+        <wsdl:part name="parameters" element="ns:SeeSavedSearch"/>
+    </wsdl:message>
+    <wsdl:message name="SeeSavedSearchResponse">
+        <wsdl:part name="parameters" element="ns:SeeSavedSearchResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="VstoSPortType">
+        <wsdl:operation name="SaveSearch">
+            <wsdl:input message="axis2:SaveSearchRequest" wsaw:Action="urn:SaveSearch"/>
+            <wsdl:output message="axis2:SaveSearchResponse" wsaw:Action="urn:SaveSearchResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="SeeSavedSearch">
+            <wsdl:input message="axis2:SeeSavedSearchRequest" wsaw:Action="urn:SeeSavedSearch"/>
+            <wsdl:output message="axis2:SeeSavedSearchResponse" wsaw:Action="urn:SeeSavedSearchResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="VstoSSoap11Binding" type="axis2:VstoSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="SaveSearch">
+            <soap:operation soapAction="urn:SaveSearch" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/WS-I_R2717/src/WS-I_R2717violation"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/WS-I_R2717/src/WS-I_R2717violation"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SeeSavedSearch">
+            <soap:operation soapAction="urn:SeeSavedSearch" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/WS-I_R2717/src/WS-I_R2717violation"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/WS-I_R2717/src/WS-I_R2717violation"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>   
+    <wsdl:service name="VstoS">
+        <wsdl:port name="VstoSHttpSoap11Endpoint" binding="axis2:VstoSSoap11Binding">
+            <soap:address location="http://localhost:8888/axis2/services/VstoS.VstoSHttpSoap11Endpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

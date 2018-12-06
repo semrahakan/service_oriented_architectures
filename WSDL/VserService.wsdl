@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://inm381/Coursework" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://inm381/Coursework/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax219="http://ws.apache.org/axis2/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://inm381/Coursework">
+    <wsdl:documentation>VserService</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="Cars">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="make" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="mileage" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="price" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="year" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax220="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://inm381/Coursework/xsd">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="searchVehicle">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="make" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="mileage" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="price" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="year" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="searchVehicleResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax219:Cars"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="searchVehicleRequest">
+        <wsdl:part name="parameters" element="ns:searchVehicle"/>
+    </wsdl:message>
+    <wsdl:message name="searchVehicleResponse">
+        <wsdl:part name="parameters" element="ns:searchVehicleResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="VserServicePortType">
+        <wsdl:operation name="searchVehicle">
+            <wsdl:input message="axis2:searchVehicleRequest" wsaw:Action="urn:searchVehicle"/>
+            <wsdl:output message="axis2:searchVehicleResponse" wsaw:Action="urn:searchVehicleResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="VserServiceSoap11Binding" type="axis2:VserServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="searchVehicle">
+            <soap:operation soapAction="urn:searchVehicle" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="VserServiceSoap12Binding" type="axis2:VserServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="searchVehicle">
+            <soap12:operation soapAction="urn:searchVehicle" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="VserServiceHttpBinding" type="axis2:VserServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="searchVehicle">
+            <http:operation location="VserService/searchVehicle"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="searchVehicle"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="searchVehicle"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="VserService">
+        <wsdl:port name="VserServiceHttpSoap11Endpoint" binding="axis2:VserServiceSoap11Binding">
+            <soap:address location="http://10.0.2.15:8888/axis2/services/VserService.VserServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="VserServiceHttpSoap12Endpoint" binding="axis2:VserServiceSoap12Binding">
+            <soap12:address location="http://10.0.2.15:8888/axis2/services/VserService.VserServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="VserServiceHttpEndpoint" binding="axis2:VserServiceHttpBinding">
+            <http:address location="http://10.0.2.15:8888/axis2/services/VserService.VserServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

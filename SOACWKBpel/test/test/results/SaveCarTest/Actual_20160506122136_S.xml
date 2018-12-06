@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <m:saveVehicleResponse xmlns:m="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL">
+      <car>
+        <ns1:id xmlns:ns1="http://ws.apache.org/axis2/xsd">1</ns1:id>
+        <ns1:make xmlns:ns1="http://ws.apache.org/axis2/xsd">bwm</ns1:make>
+        <ns1:mileage xmlns:ns1="http://ws.apache.org/axis2/xsd">1000</ns1:mileage>
+        <ns1:model xmlns:ns1="http://ws.apache.org/axis2/xsd">316i</ns1:model>
+        <ns1:price xmlns:ns1="http://ws.apache.org/axis2/xsd">45000</ns1:price>
+        <ns1:year xmlns:ns1="http://ws.apache.org/axis2/xsd">2010</ns1:year>
+      </car>
+    </m:saveVehicleResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

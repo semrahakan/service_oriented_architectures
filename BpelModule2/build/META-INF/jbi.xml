@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns0="http://enterprise.netbeans.org/bpel/BpelModule2/bpelModule2" xmlns:ns1="http://inm381/Coursework" xmlns:ns2="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" xmlns:ns3="http://www.sun.com/jbi/descriptor/service-unit" version="1.0">
+    <services binding-component="false">
+        <provides endpoint-name="BpelPortTypeRole_myRole" interface-name="ns2:BpelPortType" service-name="ns0:PartnerLink1">
+            <ns3:display-name>PartnerLink1</ns3:display-name>
+            <ns3:process-name>bpelModule2</ns3:process-name>
+            <ns3:file-path>bpelModule2.bpel</ns3:file-path>
+        </provides>
+        <consumes endpoint-name="VserServiceRole_partnerRole" interface-name="ns1:VserServicePortType" service-name="ns0:SearchV_PL">
+            <ns3:display-name>SearchV_PL</ns3:display-name>
+            <ns3:process-name>bpelModule2</ns3:process-name>
+            <ns3:file-path>bpelModule2.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="VstoSRole_partnerRole" interface-name="ns1:VstoSPortType" service-name="ns0:SaveV_PL">
+            <ns3:display-name>SaveV_PL</ns3:display-name>
+            <ns3:process-name>bpelModule2</ns3:process-name>
+            <ns3:file-path>bpelModule2.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="LbrosRole_partnerRole" interface-name="ns1:LbrosPortType" service-name="ns0:SearchL_PL">
+            <ns3:display-name>SearchL_PL</ns3:display-name>
+            <ns3:process-name>bpelModule2</ns3:process-name>
+            <ns3:file-path>bpelModule2.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="LappSRole_partnerRole" interface-name="ns1:LappSPortType" service-name="ns0:LoanApp">
+            <ns3:display-name>LoanApp</ns3:display-name>
+            <ns3:process-name>bpelModule2</ns3:process-name>
+            <ns3:file-path>bpelModule2.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="VomSRole_partnerRole" interface-name="ns1:VomSPortType" service-name="ns0:VomS_PL">
+            <ns3:display-name>VomS_PL</ns3:display-name>
+            <ns3:process-name>bpelModule2</ns3:process-name>
+            <ns3:file-path>bpelModule2.bpel</ns3:file-path>
+        </consumes>
+        <consumes endpoint-name="CpaySRole_partnerRole" interface-name="ns1:CpaySPortType" service-name="ns0:CpaS_PL">
+            <ns3:display-name>CpaS_PL</ns3:display-name>
+            <ns3:process-name>bpelModule2</ns3:process-name>
+            <ns3:file-path>bpelModule2.bpel</ns3:file-path>
+        </consumes>
+    </services>
+</jbi>

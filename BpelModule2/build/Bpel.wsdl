@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Bpel" targetNamespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL" xmlns:ns="http://ws.apache.org/axis2/xsd" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL">
+            <xsd:import namespace="http://ws.apache.org/axis2/xsd" schemaLocation="Output.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="findVehicleRequest">
+        <part name="make" type="xsd:string"/>
+        <part name="model" type="xsd:string"/>
+        <part name="year" type="xsd:string"/>
+        <part name="price" type="xsd:string"/>
+        <part name="part5" type="xsd:string"/>
+    </message>
+    <message name="findVehicleResponse">
+        <part name="car" type="ns:Cars"/>
+    </message>
+    <message name="BpelOperationRequest">
+        <part name="part1" type="xsd:string"/>
+    </message>
+    <message name="BpelOperationResponse">
+        <part name="car" type="ns:Cars"/>
+    </message>
+    <message name="BpelOperationRequest1">
+        <part name="part1" type="xsd:string"/>
+    </message>
+    <message name="BpelOperationResponse1">
+        <part name="part1" type="ns:LoanProducts"/>
+    </message>
+    <message name="BpelOperationRequest2">
+        <part name="idLoan" type="xsd:string"/>
+        <part name="part2" type="xsd:string"/>
+    </message>
+    <message name="BpelOperationResponse2">
+        <part name="LoanProducts" type="ns:LoanProducts"/>
+    </message>
+    <message name="BpelOperationRequest3">
+        <part name="part1" type="xsd:string"/>
+    </message>
+    <message name="BpelOperationResponse3">
+        <part name="loanProducts" type="ns:LoanProducts"/>
+    </message>
+    <message name="BpelOperationRequest4">
+        <part name="part1" type="xsd:string"/>
+    </message>
+    <message name="BpelOperationResponse4">
+        <part name="part1" type="xsd:boolean"/>
+    </message>
+    <message name="BpelOperationRequest5">
+        <part name="vehiclePrice" type="xsd:string"/>
+        <part name="money" type="xsd:string"/>
+        <part name="part3" type="xsd:string"/>
+    </message>
+    <message name="BpelOperationResponse5">
+        <part name="offer" type="xsd:boolean"/>
+    </message>
+    <message name="BpelOperationRequest6">
+        <part name="VehiclePrice" type="xsd:int"/>
+        <part name="money" type="xsd:int"/>
+    </message>
+    <message name="BpelOperationResponse6">
+        <part name="offer" type="xsd:boolean"/>
+    </message>
+    <message name="BpelOperationRequest7">
+        <part name="CardType" type="xsd:string"/>
+        <part name="CardNumber" type="xsd:string"/>
+        <part name="part3" type="xsd:string"/>
+    </message>
+    <message name="BpelOperationResponse7">
+        <part name="part1" type="xsd:boolean"/>
+    </message>
+    <portType name="BpelPortType">
+        <operation name="findVehicle">
+            <input name="input1" message="tns:findVehicleRequest"/>
+            <output name="output1" message="tns:findVehicleResponse"/>
+        </operation>
+        <operation name="saveVehicle">
+            <input name="input2" message="tns:BpelOperationRequest"/>
+            <output name="output2" message="tns:BpelOperationResponse"/>
+        </operation>
+        <operation name="searchLoan">
+            <input name="input3" message="tns:BpelOperationRequest1"/>
+            <output name="output3" message="tns:BpelOperationResponse1"/>
+        </operation>
+        <operation name="saveLoanProducts">
+            <input name="input4" message="tns:BpelOperationRequest2"/>
+            <output name="output4" message="tns:BpelOperationResponse2"/>
+        </operation>
+        <operation name="retrieveLoans">
+            <input name="input5" message="tns:BpelOperationRequest3"/>
+            <output name="output5" message="tns:BpelOperationResponse3"/>
+        </operation>
+        <operation name="fileLoanApp">
+            <input name="input6" message="tns:BpelOperationRequest4"/>
+            <output name="output6" message="tns:BpelOperationResponse4"/>
+        </operation>
+        <operation name="CarOffer">
+            <input name="input7" message="tns:BpelOperationRequest6"/>
+            <output name="output7" message="tns:BpelOperationResponse6"/>
+        </operation>
+        <operation name="CardPayment">
+            <input name="input8" message="tns:BpelOperationRequest7"/>
+            <output name="output8" message="tns:BpelOperationResponse7"/>
+        </operation>
+    </portType>
+    <binding name="BpelBinding" type="tns:BpelPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="findVehicle">
+            <soap:operation/>
+            <input name="input1">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+        <operation name="saveVehicle">
+            <input name="input2">
+                 <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input>
+            <output name="output2">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+        <operation name="searchLoan">
+            <input name="input3">
+                 <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input>
+            <output name="output3">
+                 <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+        <operation name="saveLoanProducts">
+            <input name="input4">
+                  <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input>      
+            <output name="output4">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+        <operation name="retrieveLoans">
+            <input name="input5">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input> 
+            <output name="output5">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+        <operation name="fileLoanApp">
+            <input name="input6">
+                 <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input> 
+            <output name="output6">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+        <operation name="CarOffer">
+            <input name="input7">
+                 <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input> 
+            <output name="output7">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+        <operation name="CardPayment">
+            <input name="input8">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </input> 
+            <output name="output8">
+                <soap:body use="literal" namespace="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="BpelService">
+        <port name="BpelPort" binding="tns:BpelBinding">
+            <soap:address location="http://localhost:3434/BpelService/BpelPort"/>
+        </port>
+    </service>
+    <plnk:partnerLinkType name="Bpel">
+        <!-- A partner link type is automatically generated when a new port type is added. Partner link types are used by BPEL processes. 
+In a BPEL process, a partner link represents the interaction between the BPEL process and a partner service. Each partner link is associated with a partner link type.
+A partner link type characterizes the conversational relationship between two services. The partner link type can have one or two roles.-->
+        <plnk:role name="BpelPortTypeRole" portType="tns:BpelPortType"/>
+    </plnk:partnerLinkType>
+</definitions>

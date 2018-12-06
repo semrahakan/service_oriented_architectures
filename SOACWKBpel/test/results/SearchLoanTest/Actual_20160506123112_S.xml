@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <m:searchLoanResponse xmlns:m="http://j2ee.netbeans.org/wsdl/BpelModule2/src/newWSDL">
+      <part1>
+        <ns1:borrow xmlns:ns1="http://ws.apache.org/axis2/xsd">11.000</ns1:borrow>
+        <ns1:cars xmlns:ns1="http://ws.apache.org/axis2/xsd">auidi</ns1:cars>
+        <ns1:idLoan xmlns:ns1="http://ws.apache.org/axis2/xsd">2</ns1:idLoan>
+        <ns1:lender xmlns:ns1="http://ws.apache.org/axis2/xsd">barclaysBank</ns1:lender>
+        <ns1:payment xmlns:ns1="http://ws.apache.org/axis2/xsd">£206PerMounth</ns1:payment>
+        <ns1:period xmlns:ns1="http://ws.apache.org/axis2/xsd">60Mounths</ns1:period>
+        <ns1:totalPayment xmlns:ns1="http://ws.apache.org/axis2/xsd">12.392</ns1:totalPayment>
+        <ns1:userID xmlns:ns1="http://ws.apache.org/axis2/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+      </part1>
+    </m:searchLoanResponse>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

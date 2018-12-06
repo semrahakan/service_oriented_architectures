@@ -1,0 +1,91 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           attributeFormDefault="qualified"
+           elementFormDefault="qualified" 
+           targetNamespace="http://ws.apache.org/axis2/xsd">
+    <xs:complexType name="Cars">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="make" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="mileage" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="price" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="year" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LoanProducts">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="borrow" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="cars" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="idLoan" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="lender" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="payment" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="period" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="totalPayment" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="searchLoan">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="userCar" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>   
+    <xs:complexType name="returnsearchLoan">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="userCar" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+         
+    <xs:complexType name="searchVehicle">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="make" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="model" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="mileage" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="price" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="year" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>   
+    <xs:complexType name="SaveSearch">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="idCar1" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>    
+    <xs:complexType name="SeeSavedSearch">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="idCar1" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>   
+    <xs:complexType name="SaveLloan">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="idLoan" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="retrieveLoan">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>   
+    <xs:complexType name="loanApp">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="giveOffer">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="vehiclePrice" type="xs:int"/>
+            <xs:element minOccurs="0" name="money" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="resultPayment">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string"/>
+            <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+      
+          
+</xs:schema>
+
+    
+    

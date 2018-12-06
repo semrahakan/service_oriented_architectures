@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:axis2="http://inm381/Coursework" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:ns="http://inm381/Coursework/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax225="http://ws.apache.org/axis2/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://inm381/Coursework">
+    <wsdl:documentation>LappS</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://ws.apache.org/axis2/xsd">
+            <xs:complexType name="LoanProducts">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="borrow" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="cars" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="idLoan" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="lender" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="payment" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="period" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="totalPayment" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax226="http://ws.apache.org/axis2/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://inm381/Coursework/xsd">
+            <xs:import namespace="http://ws.apache.org/axis2/xsd"/>
+            <xs:element name="SaveLloan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="idLoan" nillable="true" type="xs:string"/>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SaveLloanResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax226:LoanProducts"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="retrieveLoan">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="retrieveLoanResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax226:LoanProducts"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loanApp">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="userID" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="loanAppResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" type="xs:boolean"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="loanAppRequest">
+        <wsdl:part name="parameters" element="ns:loanApp"/>
+    </wsdl:message>
+    <wsdl:message name="loanAppResponse">
+        <wsdl:part name="parameters" element="ns:loanAppResponse"/>
+    </wsdl:message>
+    <wsdl:message name="retrieveLoanRequest">
+        <wsdl:part name="parameters" element="ns:retrieveLoan"/>
+    </wsdl:message>
+    <wsdl:message name="retrieveLoanResponse">
+        <wsdl:part name="parameters" element="ns:retrieveLoanResponse"/>
+    </wsdl:message>
+    <wsdl:message name="SaveLloanRequest">
+        <wsdl:part name="parameters" element="ns:SaveLloan"/>
+    </wsdl:message>
+    <wsdl:message name="SaveLloanResponse">
+        <wsdl:part name="parameters" element="ns:SaveLloanResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="LappSPortType">
+        <wsdl:operation name="loanApp">
+            <wsdl:input message="axis2:loanAppRequest" wsaw:Action="urn:loanApp"/>
+            <wsdl:output message="axis2:loanAppResponse" wsaw:Action="urn:loanAppResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="retrieveLoan">
+            <wsdl:input message="axis2:retrieveLoanRequest" wsaw:Action="urn:retrieveLoan"/>
+            <wsdl:output message="axis2:retrieveLoanResponse" wsaw:Action="urn:retrieveLoanResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="SaveLloan">
+            <wsdl:input message="axis2:SaveLloanRequest" wsaw:Action="urn:SaveLloan"/>
+            <wsdl:output message="axis2:SaveLloanResponse" wsaw:Action="urn:SaveLloanResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="LappSSoap11Binding" type="axis2:LappSPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="loanApp">
+            <soap:operation soapAction="urn:loanApp" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="retrieveLoan">
+            <soap:operation soapAction="urn:retrieveLoan" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SaveLloan">
+            <soap:operation soapAction="urn:SaveLloan" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="LappSSoap12Binding" type="axis2:LappSPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="loanApp">
+            <soap12:operation soapAction="urn:loanApp" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="retrieveLoan">
+            <soap12:operation soapAction="urn:retrieveLoan" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SaveLloan">
+            <soap12:operation soapAction="urn:SaveLloan" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="LappSHttpBinding" type="axis2:LappSPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="loanApp">
+            <http:operation location="LappS/loanApp"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="loanApp"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="loanApp"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="retrieveLoan">
+            <http:operation location="LappS/retrieveLoan"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="retrieveLoan"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="retrieveLoan"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="SaveLloan">
+            <http:operation location="LappS/SaveLloan"/>
+            <wsdl:input>
+                <mime:content type="text/xml" part="SaveLloan"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="text/xml" part="SaveLloan"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="LappS">
+        <wsdl:port name="LappSHttpSoap11Endpoint" binding="axis2:LappSSoap11Binding">
+            <soap:address location="http://10.0.2.15:8888/axis2/services/LappS.LappSHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LappSHttpSoap12Endpoint" binding="axis2:LappSSoap12Binding">
+            <soap12:address location="http://10.0.2.15:8888/axis2/services/LappS.LappSHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="LappSHttpEndpoint" binding="axis2:LappSHttpBinding">
+            <http:address location="http://10.0.2.15:8888/axis2/services/LappS.LappSHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
